@@ -5,7 +5,6 @@ const ICON_NAMES = {
   explore: { ios: 'safari.fill', android: 'explore', web: 'explore' },
   tours: { ios: 'suitcase.rolling.fill', android: 'luggage', web: 'luggage' },
   contact: { ios: 'bubble.left.and.bubble.right.fill', android: 'support_agent', web: 'support_agent' },
-  profile: { ios: 'person.crop.circle', android: 'person', web: 'person' },
   menu: { ios: 'line.3.horizontal', android: 'menu', web: 'menu' },
   search: { ios: 'magnifyingglass', android: 'search', web: 'search' },
   arrow: { ios: 'arrow.right', android: 'arrow_forward', web: 'arrow_forward' },

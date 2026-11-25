@@ -26,7 +26,6 @@ export default function TabLayout() {
       <Tabs.Screen name="explore" options={{ title: 'Explore', tabBarIcon: ({ color }) => <Icon name="explore" color={color} size={21} /> }} />
       <Tabs.Screen name="tours" options={{ title: 'Tours', tabBarIcon: ({ color }) => <Icon name="tours" color={color} size={21} /> }} />
       <Tabs.Screen name="contact" options={{ title: 'Contact', tabBarIcon: ({ color }) => <Icon name="contact" color={color} size={21} /> }} />
-      <Tabs.Screen name="profile" options={{ title: 'Profile', tabBarIcon: ({ color }) => <Icon name="profile" color={color} size={21} /> }} />
     </Tabs>
   );
 }

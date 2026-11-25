@@ -18,7 +18,6 @@ import MessagesSquare from 'lucide-react/dist/esm/icons/messages-square.mjs';
 import Phone from 'lucide-react/dist/esm/icons/phone.mjs';
 import Search from 'lucide-react/dist/esm/icons/search.mjs';
 import Sparkles from 'lucide-react/dist/esm/icons/sparkles.mjs';
-import UserRound from 'lucide-react/dist/esm/icons/user-round.mjs';
 import X from 'lucide-react/dist/esm/icons/x.mjs';
 
 const ICONS = {
@@ -26,7 +25,6 @@ const ICONS = {
   explore: Compass,
   tours: Briefcase,
   contact: MessagesSquare,
-  profile: UserRound,
   menu: Menu,
   search: Search,
   arrow: ArrowRight,
