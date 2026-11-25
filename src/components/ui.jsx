@@ -1,41 +1,14 @@
 import { Image } from 'expo-image';
 import { Link, useRouter } from 'expo-router';
-import { SymbolView } from 'expo-symbols';
 import { useSafeAreaInsets, SafeAreaView } from 'react-native-safe-area-context';
 import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { forwardRef } from 'react';
 
+import { Icon } from './Icon';
 import { ASSETS, CONTACT } from '../data/travel';
 import { openLink } from '../utils/links';
 
-const ICON_NAMES = {
-  home: { ios: 'house.fill', android: 'home', web: 'home' },
-  explore: { ios: 'safari.fill', android: 'explore', web: 'explore' },
-  tours: { ios: 'suitcase.rolling.fill', android: 'luggage', web: 'luggage' },
-  contact: { ios: 'bubble.left.and.bubble.right.fill', android: 'support_agent', web: 'support_agent' },
-  profile: { ios: 'person.crop.circle', android: 'person', web: 'person' },
-  menu: { ios: 'line.3.horizontal', android: 'menu', web: 'menu' },
-  search: { ios: 'magnifyingglass', android: 'search', web: 'search' },
-  arrow: { ios: 'arrow.right', android: 'arrow_forward', web: 'arrow_forward' },
-  chevron: { ios: 'chevron.right', android: 'chevron_right', web: 'chevron_right' },
-  back: { ios: 'arrow.left', android: 'arrow_back', web: 'arrow_back' },
-  calendar: { ios: 'calendar', android: 'calendar_month', web: 'calendar_month' },
-  pin: { ios: 'mappin.and.ellipse', android: 'location_on', web: 'location_on' },
-  clock: { ios: 'clock', android: 'schedule', web: 'schedule' },
-  chat: { ios: 'message.fill', android: 'chat', web: 'chat' },
-  phone: { ios: 'phone.fill', android: 'call', web: 'call' },
-  mail: { ios: 'envelope.fill', android: 'mail', web: 'mail' },
-  globe: { ios: 'globe', android: 'language', web: 'language' },
-  check: { ios: 'checkmark', android: 'check', web: 'check' },
-  star: { ios: 'sparkle', android: 'auto_awesome', web: 'auto_awesome' },
-  close: { ios: 'xmark', android: 'close', web: 'close' },
-  card: { ios: 'creditcard.fill', android: 'credit_card', web: 'credit_card' },
-  arrowUp: { ios: 'arrow.up.right', android: 'north_east', web: 'north_east' },
-};
-
-export function Icon({ name, size = 19, color = '#19382F', style }) {
-  return <SymbolView name={ICON_NAMES[name] ?? ICON_NAMES.star} size={size} tintColor={color} style={style} />;
-}
+export { Icon } from './Icon';
 
 export function AppHeader() {
   const router = useRouter();
@@ -164,6 +137,7 @@ export function TourCard({ tour, horizontal = false }) {
         <Image
           source={tour.image}
           contentFit="cover"
+          priority="low"
           transition={180}
           style={{ height: horizontal ? 158 : 190, width: '100%' }}
         />
@@ -192,6 +166,7 @@ export function DestinationCard({ destination, horizontal = false }) {
         <Image
           source={destination.image}
           contentFit="cover"
+          priority="low"
           transition={160}
           style={horizontal ? { width: '100%', height: 132 } : { width: 104, height: 112 }}
         />
@@ -212,7 +187,7 @@ export function RegionCard({ region, horizontal = false }) {
   return (
     <Link href={`/destination/${region.slug}`} asChild>
       <Pressable className={`overflow-hidden rounded-[24px] bg-forest ${horizontal ? 'w-[252px] mr-3' : 'mb-4'}`}>
-        <Image source={region.image} contentFit="cover" transition={180} style={{ width: '100%', height: horizontal ? 168 : 200 }} />
+        <Image source={region.image} contentFit="cover" priority="low" transition={180} style={{ width: '100%', height: horizontal ? 168 : 200 }} />
         <View className="px-4 pb-4 pt-3">
           <Text className="font-display text-[21px] text-white">{region.name}</Text>
           <Text className="mt-1 text-xs leading-5 text-white/75">{region.subtitle}</Text>

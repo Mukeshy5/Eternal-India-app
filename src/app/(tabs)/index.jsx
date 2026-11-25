@@ -24,7 +24,7 @@ function ExperienceCard({ experience }) {
   return (
     <Link href={experience.href} asChild>
       <Pressable accessibilityRole="link" className="mr-3 w-[252px] overflow-hidden rounded-[26px] bg-forest">
-        <Image source={experience.image} contentFit="cover" transition={220} style={{ width: '100%', height: 218 }} />
+        <Image source={experience.image} contentFit="cover" priority="low" transition={220} style={{ width: '100%', height: 218 }} />
         <View className="absolute inset-0 bg-[#102A23]/40" />
         <View className="absolute inset-x-0 bottom-0 p-4">
           <Text className="mb-2 self-start rounded-full border border-white/30 bg-black/20 px-3 py-1 text-[10px] font-bold tracking-[1.4px] text-white">{experience.tag}</Text>
@@ -39,7 +39,7 @@ function ExperienceCard({ experience }) {
   );
 }
 
-export default function HomeScreen() {
+function HomeSearch() {
   const [search, setSearch] = useState('');
   const router = useRouter();
 
@@ -59,9 +59,28 @@ export default function HomeScreen() {
   };
 
   return (
+    <View className="z-10 -mt-6 mx-2 rounded-[26px] border border-line bg-white p-4 shadow-md">
+      <View className="mb-3 flex-row items-end justify-between gap-3 px-1">
+        <View className="flex-1">
+          <Text className="text-[10px] font-bold uppercase tracking-[1.7px] text-copper">Start with a place</Text>
+          <Text className="mt-1 font-display text-[22px] text-forest">Where to next?</Text>
+        </View>
+        <Icon name="pin" size={20} color="#B76F51" />
+      </View>
+      <SearchInput value={search} onChangeText={setSearch} onSubmitEditing={searchTravel} placeholder="Search a destination or tour" />
+      <Pressable accessibilityRole="button" onPress={searchTravel} className="mt-3 h-12 flex-row items-center justify-center gap-2 rounded-full bg-forest">
+        <Icon name="search" size={16} color="#FFFFFF" />
+        <Text className="text-sm font-bold text-white">Find your journey</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+export default function HomeScreen() {
+  return (
     <PageFrame tabbed>
       <View className="overflow-hidden rounded-[34px] bg-forestDeep">
-        <Image source={ASSETS.heroVaranasi} contentFit="cover" transition={260} style={{ height: 420, width: '100%' }} />
+        <Image source={ASSETS.heroVaranasi} contentFit="cover" priority="high" transition={260} style={{ height: 420, width: '100%' }} />
         <View className="absolute inset-0 bg-[#102A23]/55" />
         <View className="absolute inset-x-0 top-0 flex-row items-center justify-between p-5">
           <View className="rounded-full border border-white/30 bg-black/15 px-3 py-2">
@@ -82,20 +101,7 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      <View className="z-10 -mt-6 mx-2 rounded-[26px] border border-line bg-white p-4 shadow-md">
-        <View className="mb-3 flex-row items-end justify-between gap-3 px-1">
-          <View className="flex-1">
-            <Text className="text-[10px] font-bold uppercase tracking-[1.7px] text-copper">Start with a place</Text>
-            <Text className="mt-1 font-display text-[22px] text-forest">Where to next?</Text>
-          </View>
-          <Icon name="pin" size={20} color="#B76F51" />
-        </View>
-        <SearchInput value={search} onChangeText={setSearch} onSubmitEditing={searchTravel} placeholder="Search a destination or tour" />
-        <Pressable accessibilityRole="button" onPress={searchTravel} className="mt-3 h-12 flex-row items-center justify-center gap-2 rounded-full bg-forest">
-          <Icon name="search" size={16} color="#FFFFFF" />
-          <Text className="text-sm font-bold text-white">Find your journey</Text>
-        </Pressable>
-      </View>
+      <HomeSearch />
 
       <View className="mb-1 mt-5">
         <Text className="mb-3 text-[10px] font-bold uppercase tracking-[1.7px] text-muted">Popular starting points</Text>
@@ -133,7 +139,7 @@ export default function HomeScreen() {
       </ScrollView>
 
       <View className="mt-9 overflow-hidden rounded-[30px] bg-forest">
-        <Image source={ASSETS.buddha} contentFit="cover" transition={220} style={{ width: '100%', height: 245 }} />
+        <Image source={ASSETS.buddha} contentFit="cover" priority="low" transition={220} style={{ width: '100%', height: 245 }} />
         <View className="absolute inset-0 bg-[#102A23]/50" />
         <View className="absolute inset-x-0 bottom-0 p-5">
           <Text className="text-[10px] font-bold uppercase tracking-[2px] text-white/80">A journey of reflection</Text>
